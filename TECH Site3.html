@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Start Hub — Tech Solutions for Startups & SMEs</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-dark: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #a3a3a3;
+            --text-muted: #666666;
+            --accent-color: #00ff88;
+            --accent-blue: #0099ff;
+            --border-color: #333333;
+            --gradient-primary: linear-gradient(135deg, #00ff88, #0099ff);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--primary-dark);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        html[dir="rtl"] .service-features { text-align: right; }
+        html[dir="rtl"] .service-features li { gap: 0.8rem; }
+        html[dir="rtl"] .contact-info p i { margin-left: 0.5rem; margin-right: 0; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--secondary-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 4px; }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--text-primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 153, 255, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--primary-dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .marquee {
+            overflow: hidden;
+            background: var(--gradient-primary);
+            padding: 1rem 0;
+            margin: 4rem 0;
+            display: flex;
+        }
+
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            animation: marquee-ltr 40s linear infinite;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        
+        .marquee-content span {
+            white-space: nowrap;
+            padding: 0 2rem;
+        }
+
+        @keyframes marquee-ltr {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes marquee-rtl {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+
+        html[dir="rtl"] .marquee-content {
+            animation-name: marquee-rtl;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent-color);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: var(--gradient-dark);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-height: 230px;
+            transition: max-height 0.7s cubic-bezier(0.23, 1, 0.32, 1), 
+                        box-shadow 0.3s ease, 
+                        transform 0.3s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+            max-height: 600px;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-description,
+        .service-features {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+        }
+
+        .service-card:hover .service-description,
+        .service-card:hover .service-features {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features li i {
+            color: var(--accent-color);
+            width: 16px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-dark);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        /* CHANGE: New design for portfolio items */
+        .portfolio-item {
+            background: var(--gradient-dark);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+            max-height: 130px; /* Adjusted initial height */
+            transition: max-height 0.7s cubic-bezier(0.23, 1, 0.32, 1), 
+                        box-shadow 0.3s ease, 
+                        transform 0.3s ease;
+            text-align: left; /* Default alignment */
+        }
+        html[dir="rtl"] .portfolio-item {
+            text-align: right; /* RTL alignment */
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+            max-height: 500px;
+        }
+
+        .portfolio-header {
+            background: none;
+            padding: 0;
+            color: var(--text-primary);
+        }
+
+        .portfolio-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-subtitle {
+            color: var(--text-secondary);
+            opacity: 1;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .portfolio-content {
+            padding: 0;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+        }
+        
+        .portfolio-item:hover .portfolio-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .contact-section {
+            background: var(--secondary-dark);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--gradient-dark);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-link.whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            border-color: #25D366;
+            color: #25D366;
+        }
+
+        .contact-link.whatsapp:hover {
+            background: rgba(37, 211, 102, 0.2);
+        }
+
+        .newsletter-section {
+            background: var(--gradient-dark);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            min-width: 250px;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .footer {
+            background: var(--primary-dark);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .floating-contact {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        html[dir="rtl"] .floating-contact {
+            right: auto;
+            left: 2rem;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1001;
+        }
+        html[dir="rtl"] .lang-switcher {
+            right: auto;
+            left: 2rem;
+        }
+
+        .lang-btn {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-color);
+            color: var(--primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-dark);
+                flex-direction: column;
+                padding: 2rem;
+                border-top: 1px solid var(--border-color);
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-toggle { display: block; }
+            .hero { padding: 8rem 1rem 4rem; text-align: center; }
+            .section { padding: 3rem 1rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-cta { justify-content: center; }
+            .floating-contact { bottom: 1rem; right: 1rem; }
+            html[dir="rtl"] .floating-contact { right: auto; left: 1rem; }
+            .lang-switcher { top: 1rem; right: 1rem; }
+            html[dir="rtl"] .lang-switcher { right: auto; left: 1rem; }
+            .marquee-content { font-size: 2rem; }
+            .services-grid, .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-filters { flex-direction: column; align-items: center; gap: 1rem; }
+            .filter-btn { width: 100%; max-width: 200px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher">
+        <button class="lang-btn" id="langBtn" title="العربية" aria-label="Switch Language">
+            <i class="fas fa-globe"></i>
+        </button>
+    </div>
+
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Start Hub</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active" data-translate-key="navHome">Home</a></li>
+                <li><a href="#services" data-translate-key="navServices">Services</a></li>
+                <li><a href="#about" data-translate-key="navAbout">About Us</a></li>
+                <li><a href="#portfolio" data-translate-key="navPortfolio">Case Studies</a></li>
+                <li><a href="#contact" data-translate-key="navContact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="grid-bg"></div>
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span data-translate-key="heroStatus">Empowering the next wave of innovators</span>
+                </div>
+                <div class="hero-subtitle" data-translate-key="heroSubtitle">Your Technical Co-Founder</div>
+                <h1 class="hero-title" data-translate-key="heroTitle">Launch & Scale Your Startup, Faster.</h1>
+                <p class="hero-description" data-translate-key="heroDescription">
+                    We provide startups and small businesses with the essential tech solutions to build, launch, and grow. 
+                    From MVP development and automation to AI integration and data analytics, we are your dedicated growth partner.
+                </p>
+                <div class="hero-cta">
+                    <a href="#services" class="btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        <span data-translate-key="heroBtnPrimary">Our Solutions</span>
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <i class="fas fa-comments"></i>
+                        <span data-translate-key="heroBtnSecondary">Book a Free Call</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span data-translate-key="marqueeContent"></span>
+            <span data-translate-key="marqueeContent" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="servicesSubtitle">How We Help</div>
+                <h2 class="section-title" data-translate-key="servicesTitle">Solutions to Fuel Your Growth</h2>
+                <p class="section-description" data-translate-key="servicesDescription">
+                    We offer a suite of services designed to tackle the unique challenges faced by startups and small businesses.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h3 class="service-title" data-translate-key="service1Title">MVP & Product Development</h3>
+                    <div class="service-description" data-translate-key="service1Desc">
+                        Turn your idea into a market-ready Minimum Viable Product quickly and efficiently to test your concept and attract investors.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i><span data-translate-key="service1Feat1">Rapid Prototyping</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service1Feat2">Lean Development</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service1Feat3">Scalable Architecture</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service1Feat4">User Feedback Integration</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3 class="service-title" data-translate-key="service2Title">Process Automation</h3>
+                    <div class="service-description" data-translate-key="service2Desc">
+                        Automate repetitive tasks and streamline your operations, so you can focus on what truly matters: growing your business.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i><span data-translate-key="service2Feat1">Workflow Automation</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service2Feat2">CRM & System Integration</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service2Feat3">Automated Reporting</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service2Feat4">Customer Support Bots</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-brain"></i></div>
+                    <h3 class="service-title" data-translate-key="service3Title">AI-Powered Solutions</h3>
+                    <div class="service-description" data-translate-key="service3Desc">
+                        Leverage the power of Artificial Intelligence to gain a competitive edge, from data analysis to intelligent features.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i><span data-translate-key="service3Feat1">Custom AI Models</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service3Feat2">Predictive Analytics</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service3Feat3">Natural Language Processing</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service3Feat4">Personalization Engines</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="service-title" data-translate-key="service4Title">Data & Analytics</h3>
+                    <div class="service-description" data-translate-key="service4Desc">
+                        Make smarter, data-driven decisions. We help you collect, analyze, and visualize your data to uncover actionable insights.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i><span data-translate-key="service4Feat1">Business Intelligence Dashboards</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service4Feat2">User Behavior Analysis</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service4Feat3">A/B Testing & Optimization</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service4Feat4">Data Infrastructure Setup</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fab fa-microsoft"></i></div>
+                    <h3 class="service-title" data-translate-key="service5Title">Low-Code Solutions</h3>
+                    <div class="service-description" data-translate-key="service5Desc">
+                        Build custom internal tools and apps rapidly using low-code platforms like Power Platform to solve unique business needs.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i><span data-translate-key="service5Feat1">Power Apps Development</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service5Feat2">Power Automate Workflows</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service5Feat3">Internal Tooling</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service5Feat4">Fast & Cost-Effective</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="service-title" data-translate-key="service6Title">Tech Strategy Consulting</h3>
+                    <div class="service-description" data-translate-key="service6Desc">
+                        Get expert guidance on your technology roadmap, from choosing the right tech stack to planning for future scalability.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i><span data-translate-key="service6Feat1">Technology Roadmap</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service6Feat2">Scalability Planning</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service6Feat3">Security Audits</span></li>
+                        <li><i class="fas fa-check"></i><span data-translate-key="service6Feat4">Cloud Cost Optimization</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="aboutSubtitle">Our Mission</div>
+                <h2 class="section-title" data-translate-key="aboutTitle">We Believe Great Ideas Deserve Great Tech</h2>
+                <p class="section-description" data-translate-key="aboutDescription">
+                    Start Hub was founded to bridge the technology gap for ambitious startups and small businesses. We act as your flexible, expert tech partner.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3 data-translate-key="aboutContentTitle">Your Partner in Innovation</h3>
+                    <p data-translate-key="aboutContentP1">
+                        Finding reliable, expert-level technical talent is one of the biggest hurdles for new companies. We provide the expertise of a CTO and a development team, without the overhead.
+                    </p>
+                    <p data-translate-key="aboutContentP2">
+                        Our model is built on partnership. We embed ourselves in your vision, working closely with you to build solutions that are not just technologically sound, but also perfectly aligned with your business goals. We celebrate your wins as our own.
+                    </p>
+                    <p data-translate-key="aboutFounder">
+                        Founded by Mohamed Mostafa, Start Hub is driven by a passion for helping new ventures succeed through the strategic use of technology.
+                    </p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label" data-translate-key="stat1">Startups Empowered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label" data-translate-key="stat2">Solutions Deployed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label" data-translate-key="stat3">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="portfolioSubtitle">Our Impact</div>
+                <h2 class="section-title" data-translate-key="portfolioTitle">Success Stories & Case Studies</h2>
+                <p class="section-description" data-translate-key="portfolioDescription">
+                    See how we've helped startups like yours to launch, automate, and scale their operations.
+                </p>
+            </div>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all" data-translate-key="filterAll">All</button>
+                <button class="filter-btn" data-filter="ai" data-translate-key="filterAi">AI & Data</button>
+                <button class="filter-btn" data-filter="automation" data-translate-key="filterAutomation">Automation</button>
+                <button class="filter-btn" data-filter="mvp" data-translate-key="filterMvp">MVP</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title" data-translate-key="case1Title">AI-Powered Feedback Analysis</h3>
+                        <p class="portfolio-subtitle" data-translate-key="case1Subtitle">For a SaaS Startup</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description" data-translate-key="case1Desc">
+                            Developed an AI system that automatically analyzes customer support tickets and reviews, identifying key pain points and feature requests to guide the product roadmap.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="mvp automation">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title" data-translate-key="case2Title">E-commerce Operations Platform</h3>
+                        <p class="portfolio-subtitle" data-translate-key="case2Subtitle">For a Small Retail Business</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description" data-translate-key="case2Desc">
+                            Built a custom internal dashboard using low-code tools to manage inventory, track orders, and automate customer communication, saving 20+ hours of manual work per week.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Power Apps</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">Low-Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="mvp">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title" data-translate-key="case3Title">Smart Recruitment MVP</h3>
+                        <p class="portfolio-subtitle" data-translate-key="case3Subtitle">For an HR Tech Startup</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description" data-translate-key="case3Desc">
+                           Launched a Minimum Viable Product for a platform that uses AI to analyze resumes and match candidates to jobs, helping the startup secure its first round of funding.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">MVP</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title" data-translate-key="case4Title">BI Dashboard for Marketing</h3>
+                        <p class="portfolio-subtitle" data-translate-key="case4Subtitle">For a D2C Brand</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description" data-translate-key="case4Desc">
+                            Created a comprehensive BI dashboard connecting data from multiple ad platforms, providing real-time insights on campaign performance and customer acquisition cost.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Data Analytics</span>
+                            <span class="tech-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="contactSubtitle">Let's Build Together</div>
+                <h2 class="section-title" data-translate-key="contactTitle">Have an Idea? Let's Talk.</h2>
+                <p class="section-description" data-translate-key="contactDescription">
+                    We're excited to hear about your project. Schedule a free, no-obligation consultation call to discuss your vision and goals.
+                </p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 data-translate-key="contactFormTitle">Get in Touch</h3>
+                    <p data-translate-key="contactFormDesc">
+                        Whether you're just starting out or looking to scale, we're here to help you navigate your tech journey.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:hello@starthub.tech" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@starthub.tech</span>
+                        </a>
+                        <a href="https://linkedin.com/" target="_blank" class="contact-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span data-translate-key="contactLinkedin">LinkedIn</span>
+                        </a>
+                        <a href="https://wa.me/201124178993" target="_blank" class="contact-link whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-translate-key="contactWhatsapp">Chat on WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="contact-info">
+                        <h3 data-translate-key="contactProcessTitle">Our Process</h3>
+                        <p>
+                            <i class="fas fa-check"></i>
+                            <strong data-translate-key="contactProcess1">1. Discovery Call:</strong> <span data-translate-key="contactProcess1Desc">We listen to your idea and goals.</span>
+                        </p>
+                         <p>
+                            <i class="fas fa-check"></i>
+                            <strong data-translate-key="contactProcess2">2. Strategy Session:</strong> <span data-translate-key="contactProcess2Desc">We map out a tech plan.</span>
+                        </p>
+                         <p>
+                            <i class="fas fa-check"></i>
+                            <strong data-translate-key="contactProcess3">3. Build & Iterate:</strong> <span data-translate-key="contactProcess3Desc">We develop, test, and launch.</span>
+                        </p>
+                        <br>
+                        
+                        <div class="newsletter-section" style="margin-top: 2rem;">
+                            <h3 style="color: var(--accent-color);" data-translate-key="newsletterTitle">Startup Insights</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-translate-key="newsletterDesc">
+                                Get tips on tech, growth, and automation delivered to your inbox.
+                            </p>
+                            <form class="newsletter-form">
+                                <input type="email" class="newsletter-input" data-translate-key="newsletterPlaceholder" placeholder="Enter your email" required>
+                                <button type="submit" class="btn-primary" data-translate-key="newsletterBtn">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <p data-translate-key="footerText">&copy; 2025 Start Hub. All rights reserved. Your technical partner for startup success.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Contact -->
+    <div class="floating-contact">
+        <a href="https://wa.me/201124178993" target="_blank" class="floating-btn whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        // --- TRANSLATION DATA ---
+        const translations = {
+            navHome: { en: 'Home', ar: 'الرئيسية' },
+            navServices: { en: 'Services', ar: 'خدماتنا' },
+            navAbout: { en: 'About Us', ar: 'من نحن' },
+            navPortfolio: { en: 'Case Studies', ar: 'دراسات الحالة' },
+            navContact: { en: 'Contact', ar: 'تواصل معنا' },
+            heroStatus: { en: 'Empowering the next wave of innovators', ar: 'نُمكّن الجيل القادم من المبتكرين' },
+            heroSubtitle: { en: 'Your Technical Co-Founder', ar: 'شريكك التقني المؤسس' },
+            heroTitle: { en: 'Launch & Scale Your Startup, Faster.', ar: 'أطلق ووسّع شركتك الناشئة، بشكل أسرع.' },
+            heroDescription: { en: 'We provide startups and small businesses with the essential tech solutions to build, launch, and grow. From MVP development and automation to AI integration and data analytics, we are your dedicated growth partner.', ar: 'نوفر للشركات الناشئة والصغيرة الحلول التقنية الأساسية للبناء والإطلاق والنمو. من تطوير المنتجات الأولية والأتمتة إلى دمج الذكاء الاصطناعي وتحليلات البيانات، نحن شريكك المخصص للنمو.' },
+            heroBtnPrimary: { en: 'Our Solutions', ar: 'اكتشف حلولنا' },
+            heroBtnSecondary: { en: 'Book a Free Call', ar: 'احجز استشارة مجانية' },
+            marqueeContent: { en: 'Business Solutions • Power Platform • AI Implementation • Work Automation • Data Engineering • Data Analysis • Data Visualization •', ar: 'حلول أعمال • منصة Power • تطبيقات الذكاء الاصطناعي • أتمتة العمل • هندسة البيانات • تحليل البيانات • تصور البيانات •' },
+            servicesSubtitle: { en: 'How We Help', ar: 'كيف نساعدك' },
+            servicesTitle: { en: 'Solutions to Fuel Your Growth', ar: 'حلول تدعم نموك' },
+            servicesDescription: { en: 'We offer a suite of services designed to tackle the unique challenges faced by startups and small businesses.', ar: 'نقدم مجموعة من الخدمات المصممة لمواجهة التحديات الفريدة التي تواجهها الشركات الناشئة والصغيرة.' },
+            service1Title: { en: 'MVP & Product Development', ar: 'تطوير المنتجات الأولية (MVP)' },
+            service1Desc: { en: 'Turn your idea into a market-ready Minimum Viable Product quickly and efficiently to test your concept and attract investors.', ar: 'حوّل فكرتك إلى منتج أولي جاهز للسوق بسرعة وكفاءة لاختبار مفهومك وجذب المستثمرين.' },
+            service1Feat1: { en: 'Rapid Prototyping', ar: 'نماذج أولية سريعة' },
+            service1Feat2: { en: 'Lean Development', ar: 'تطوير مرن' },
+            service1Feat3: { en: 'Scalable Architecture', ar: 'بنية قابلة للتوسع' },
+            service1Feat4: { en: 'User Feedback Integration', ar: 'دمج ملاحظات المستخدمين' },
+            service2Title: { en: 'Process Automation', ar: 'أتمتة العمليات' },
+            service2Desc: { en: 'Automate repetitive tasks and streamline your operations, so you can focus on what truly matters: growing your business.', ar: 'أتمتة المهام المتكررة وتبسيط عملياتك، حتى تتمكن من التركيز على ما يهم حقًا: تنمية أعمالك.' },
+            service2Feat1: { en: 'Workflow Automation', ar: 'أتمتة سير العمل' },
+            service2Feat2: { en: 'CRM & System Integration', ar: 'دمج الأنظمة و CRM' },
+            service2Feat3: { en: 'Automated Reporting', ar: 'تقارير آلية' },
+            service2Feat4: { en: 'Customer Support Bots', ar: 'بوتات دعم العملاء' },
+            service3Title: { en: 'AI-Powered Solutions', ar: 'حلول مدعومة بالذكاء الاصطناعي' },
+            service3Desc: { en: 'Leverage the power of Artificial Intelligence to gain a competitive edge, from data analysis to intelligent features.', ar: 'استفد من قوة الذكاء الاصطناعي لتحقيق ميزة تنافسية، من تحليل البيانات إلى الميزات الذكية.' },
+            service3Feat1: { en: 'Custom AI Models', ar: 'نماذج ذكاء اصطناعي مخصصة' },
+            service3Feat2: { en: 'Predictive Analytics', ar: 'تحليلات تنبؤية' },
+            service3Feat3: { en: 'Natural Language Processing', ar: 'معالجة اللغات الطبيعية' },
+            service3Feat4: { en: 'Personalization Engines', ar: 'محركات التخصيص' },
+            service4Title: { en: 'Data & Analytics', ar: 'البيانات والتحليلات' },
+            service4Desc: { en: 'Make smarter, data-driven decisions. We help you collect, analyze, and visualize your data to uncover actionable insights.', ar: 'اتخذ قرارات أذكى ومبنية على البيانات. نساعدك في جمع وتحليل وتصوير بياناتك للكشف عن رؤى قابلة للتنفيذ.' },
+            service4Feat1: { en: 'Business Intelligence Dashboards', ar: 'لوحات معلومات ذكاء الأعمال' },
+            service4Feat2: { en: 'User Behavior Analysis', ar: 'تحليل سلوك المستخدم' },
+            service4Feat3: { en: 'A/B Testing & Optimization', ar: 'اختبار A/B والتحسين' },
+            service4Feat4: { en: 'Data Infrastructure Setup', ar: 'إعداد البنية التحتية للبيانات' },
+            service5Title: { en: 'Low-Code Solutions', ar: 'حلول Low-Code' },
+            service5Desc: { en: 'Build custom internal tools and apps rapidly using low-code platforms like Power Platform to solve unique business needs.', ar: 'أنشئ أدوات وتطبيقات داخلية مخصصة بسرعة باستخدام منصات low-code مثل Power Platform لحل احتياجات العمل الفريدة.' },
+            service5Feat1: { en: 'Power Apps Development', ar: 'تطوير تطبيقات Power Apps' },
+            service5Feat2: { en: 'Power Automate Workflows', ar: 'أتمتة سير العمل بـ Power Automate' },
+            service5Feat3: { en: 'Internal Tooling', ar: 'أدوات داخلية' },
+            service5Feat4: { en: 'Fast & Cost-Effective', ar: 'سريع وفعال من حيث التكلفة' },
+            service6Title: { en: 'Tech Strategy Consulting', ar: 'استشارات الاستراتيجية التقنية' },
+            service6Desc: { en: 'Get expert guidance on your technology roadmap, from choosing the right tech stack to planning for future scalability.', ar: 'احصل على إرشادات الخبراء بشأن خارطة طريق التكنولوجيا الخاصة بك، من اختيار المجموعة التقنية المناسبة إلى التخطيط للتوسع المستقبلي.' },
+            service6Feat1: { en: 'Technology Roadmap', ar: 'خارطة طريق التكنولوجيا' },
+            service6Feat2: { en: 'Scalability Planning', ar: 'تخطيط قابلية التوسع' },
+            service6Feat3: { en: 'Security Audits', ar: 'تدقيق أمني' },
+            service6Feat4: { en: 'Cloud Cost Optimization', ar: 'تحسين تكاليف السحابة' },
+            aboutSubtitle: { en: 'Our Mission', ar: 'مهمتنا' },
+            aboutTitle: { en: 'We Believe Great Ideas Deserve Great Tech', ar: 'نؤمن بأن الأفكار العظيمة تستحق تقنية عظيمة' },
+            aboutDescription: { en: 'Start Hub was founded to bridge the technology gap for ambitious startups and small businesses. We act as your flexible, expert tech partner.', ar: 'تأسست Start Hub لسد الفجوة التقنية للشركات الناشئة الطموحة والشركات الصغيرة. نحن نعمل كشريكك التقني الخبير والمرن.' },
+            aboutContentTitle: { en: 'Your Partner in Innovation', ar: 'شريكك في الابتكار' },
+            aboutContentP1: { en: 'Finding reliable, expert-level technical talent is one of the biggest hurdles for new companies. We provide the expertise of a CTO and a development team, without the overhead.', ar: 'يعد العثور على مواهب تقنية موثوقة وذات خبرة من أكبر العقبات التي تواجه الشركات الجديدة. نحن نقدم خبرة مدير تقني وفريق تطوير، دون تكاليف باهظة.' },
+            aboutContentP2: { en: 'Our model is built on partnership. We embed ourselves in your vision, working closely with you to build solutions that are not just technologically sound, but also perfectly aligned with your business goals. We celebrate your wins as our own.', ar: 'نموذجنا مبني على الشراكة. نغمر أنفسنا في رؤيتك، ونعمل معك عن كثب لبناء حلول ليست سليمة من الناحية التقنية فحسب، بل تتماشى تمامًا مع أهداف عملك. نحتفل بنجاحاتك كأنها نجاحاتنا.' },
+            aboutFounder: { en: 'Founded by Mohamed Mostafa, Start Hub is driven by a passion for helping new ventures succeed through the strategic use of technology.', ar: 'أسسها محمد مصطفى، وتدفع Start Hub شغف بمساعدة المشاريع الجديدة على النجاح من خلال الاستخدام الاستراتيجي للتكنولوجيا.'},
+            stat1: { en: 'Startups Empowered', ar: 'شركة ناشئة تم تمكينها' },
+            stat2: { en: 'Solutions Deployed', ar: 'حل تم تنفيذه' },
+            stat3: { en: 'Client Satisfaction', ar: 'رضا العملاء' },
+            portfolioSubtitle: { en: 'Our Impact', ar: 'تأثيرنا' },
+            portfolioTitle: { en: 'Success Stories & Case Studies', ar: 'قصص نجاح ودراسات حالة' },
+            portfolioDescription: { en: "See how we've helped startups like yours to launch, automate, and scale their operations.", ar: 'شاهد كيف ساعدنا الشركات الناشئة مثلك على إطلاق عملياتها وأتمتتها وتوسيع نطاقها.' },
+            filterAll: { en: 'All', ar: 'الكل' },
+            filterAi: { en: 'AI & Data', ar: 'الذكاء الاصطناعي والبيانات' },
+            filterAutomation: { en: 'Automation', ar: 'الأتمتة' },
+            filterMvp: { en: 'MVP', ar: 'منتج أولي' },
+            case1Title: { en: 'AI-Powered Feedback Analysis', ar: 'تحليل آراء العملاء بالذكاء الاصطناعي' },
+            case1Subtitle: { en: 'For a SaaS Startup', ar: 'لشركة SaaS ناشئة' },
+            case1Desc: { en: 'Developed an AI system that automatically analyzes customer support tickets and reviews, identifying key pain points and feature requests to guide the product roadmap.', ar: 'طورنا نظام ذكاء اصطناعي يحلل تلقائيًا تذاكر دعم العملاء والمراجعات، ويحدد نقاط الضعف الرئيسية وطلبات الميزات لتوجيه خارطة طريق المنتج.' },
+            case2Title: { en: 'E-commerce Operations Platform', ar: 'منصة عمليات التجارة الإلكترونية' },
+            case2Subtitle: { en: 'For a Small Retail Business', ar: 'لشركة تجزئة صغيرة' },
+            case2Desc: { en: 'Built a custom internal dashboard using low-code tools to manage inventory, track orders, and automate customer communication, saving 20+ hours of manual work per week.', ar: 'أنشأنا لوحة تحكم داخلية مخصصة باستخدام أدوات low-code لإدارة المخزون وتتبع الطلبات وأتمتة التواصل مع العملاء، مما يوفر أكثر من 20 ساعة من العمل اليدوي أسبوعيًا.' },
+            case3Title: { en: 'Smart Recruitment MVP', ar: 'منتج أولي لمنصة توظيف ذكية' },
+            case3Subtitle: { en: 'For an HR Tech Startup', ar: 'لشركة ناشئة في تكنولوجيا الموارد البشرية' },
+            case3Desc: { en: 'Launched a Minimum Viable Product for a platform that uses AI to analyze resumes and match candidates to jobs, helping the startup secure its first round of funding.', ar: 'أطلقنا منتجًا أوليًا لمنصة تستخدم الذكاء الاصطناعي لتحليل السير الذاتية ومطابقة المرشحين للوظائف، مما ساعد الشركة الناشئة على تأمين جولتها التمويلية الأولى.' },
+            case4Title: { en: 'BI Dashboard for Marketing', ar: 'لوحة معلومات تسويقية' },
+            case4Subtitle: { en: 'For a D2C Brand', ar: 'لـعلامة تجارية D2C' },
+            case4Desc: { en: 'Created a comprehensive BI dashboard connecting data from multiple ad platforms, providing real-time insights on campaign performance and customer acquisition cost.', ar: 'أنشأنا لوحة معلومات شاملة تربط البيانات من منصات إعلانية متعددة، وتوفر رؤى في الوقت الفعلي حول أداء الحملة وتكلفة اكتساب العملاء.' },
+            contactSubtitle: { en: "Let's Build Together", ar: 'لنبدأ البناء معًا' },
+            contactTitle: { en: "Have an Idea? Let's Talk.", ar: 'لديك فكرة؟ لنتحدث.' },
+            contactDescription: { en: "We're excited to hear about your project. Schedule a free, no-obligation consultation call to discuss your vision and goals.", ar: 'نحن متحمسون لسماع مشروعك. حدد موعدًا لمكالمة استشارية مجانية وغير ملزمة لمناقشة رؤيتك وأهدافك.' },
+            contactFormTitle: { en: 'Get in Touch', ar: 'تواصل معنا' },
+            contactFormDesc: { en: "Whether you're just starting out or looking to scale, we're here to help you navigate your tech journey.", ar: 'سواء كنت في البداية أو تتطلع إلى التوسع، نحن هنا لمساعدتك في رحلتك التقنية.' },
+            contactLinkedin: { en: 'LinkedIn', ar: 'لينكدإن' },
+            contactWhatsapp: { en: 'Chat on WhatsApp', ar: 'تحدث عبر واتساب' },
+            contactProcessTitle: { en: 'Our Process', ar: 'نهجنا في العمل' },
+            contactProcess1: { en: '1. Discovery Call:', ar: '١. مكالمة استكشافية:' },
+            contactProcess1Desc: { en: 'We listen to your idea and goals.', ar: 'نستمع إلى فكرتك وأهدافك.' },
+            contactProcess2: { en: '2. Strategy Session:', ar: '٢. جلسة استراتيجية:' },
+            contactProcess2Desc: { en: 'We map out a tech plan.', ar: 'نرسم خطة تقنية.' },
+            contactProcess3: { en: '3. Build & Iterate:', ar: '٣. بناء وتطوير:' },
+            contactProcess3Desc: { en: 'We develop, test, and launch.', ar: 'نطور، نختبر، ونطلق.' },
+            newsletterTitle: { en: 'Startup Insights', ar: 'رؤى للشركات الناشئة' },
+            newsletterDesc: { en: 'Get tips on tech, growth, and automation delivered to your inbox.', ar: 'احصل على نصائح حول التكنولوجيا والنمو والأتمتة في بريدك الوارد.' },
+            newsletterPlaceholder: { en: 'Enter your email', ar: 'أدخل بريدك الإلكتروني' },
+            newsletterBtn: { en: 'Subscribe', ar: 'اشترك' },
+            footerText: { en: '© 2025 Start Hub. All rights reserved. Your technical partner for startup success.', ar: '© 2025 Start Hub. جميع الحقوق محفوظة. شريكك التقني لنجاح شركتك الناشئة.' },
+        };
+
+        // --- CORE LOGIC ---
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const langBtn = document.getElementById('langBtn');
+            let currentLang = 'en'; // Default language
+
+            const switchLanguage = (lang) => {
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                langBtn.title = lang === 'ar' ? 'English' : 'العربية';
+
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.getAttribute('data-translate-key');
+                    if (translations[key] && translations[key][lang]) {
+                        if (el.tagName === 'INPUT' && el.type === 'email') {
+                            el.placeholder = translations[key][lang];
+                        } else {
+                            el.textContent = translations[key][lang];
+                        }
+                    }
+                });
+            };
+            
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    currentLang = currentLang === 'en' ? 'ar' : 'en';
+                    switchLanguage(currentLang);
+                });
+            }
+            
+            switchLanguage(currentLang);
+
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    const icon = navToggle.querySelector('i');
+                    icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    if (navToggle) {
+                        navToggle.querySelector('i').className = 'fas fa-bars';
+                    }
+                });
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section, .hero');
+                const scrollPos = window.scrollY + 100;
+
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const bottom = top + section.offsetHeight;
+                    const id = section.getAttribute('id');
+
+                    if (scrollPos >= top && scrollPos <= bottom) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filterValue = btn.getAttribute('data-filter');
+                    portfolioItems.forEach(item => {
+                        item.style.transition = 'opacity 0.3s ease-in-out';
+                        if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
+                            item.style.display = 'block';
+                            setTimeout(() => item.style.opacity = '1', 10);
+                        } else {
+                            item.style.opacity = '0';
+                            setTimeout(() => item.style.display = 'none', 300);
+                        }
+                    });
+                });
+            });
+
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = e.target.querySelector('.newsletter-input').value;
+                    if (email) {
+                        const button = e.target.querySelector('.btn-primary');
+                        const originalTextKey = button.getAttribute('data-translate-key');
+                        const originalText = translations[originalTextKey][currentLang];
+                        button.textContent = currentLang === 'ar' ? 'تم الاشتراك!' : 'Subscribed!';
+                        button.style.background = 'var(--accent-color)';
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.style.background = '';
+                            e.target.querySelector('.newsletter-input').value = '';
+                        }, 2000);
+                    }
+                });
+            }
+
+            // This is a single selector for both card types for the hover transform effect
+            const hoverCards = document.querySelectorAll('.stat-card');
+            hoverCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroBackground = document.querySelector('.hero-bg');
+                if (heroBackground && scrolled < window.innerHeight) {
+                    heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

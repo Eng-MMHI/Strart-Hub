@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Start Hub — Tech Solutions for Startups & SMEs</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Start Hub</div>
+        </div>
+    </div>
+
+    <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
+
+    <div class="lang-switcher">
+        <button class="lang-btn" id="langBtn" title="العربية" aria-label="Switch Language">
+            <i class="fas fa-globe"></i>
+        </button>
+    </div>
+
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Start Hub</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active" data-translate-key="navHome">Home</a></li>
+                <li><a href="#services" class="nav-link" data-translate-key="navServices">Services</a></li>
+                <li><a href="#about" class="nav-link" data-translate-key="navAbout">About Us</a></li>
+                <li><a href="#portfolio" class="nav-link" data-translate-key="navPortfolio">Case Studies</a></li>
+                <li><a href="#contact" class="nav-link" data-translate-key="navContact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-particles"></div>
+        <div class="grid-bg"></div>
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span data-translate-key="heroStatus">Empowering the next wave of innovators</span>
+                </div>
+                <div class="hero-subtitle" data-translate-key="heroSubtitle">Your Technical Co-Founder</div>
+                <h1 class="hero-title" data-translate-key="heroTitle">Launch & Scale Your Startup, Faster.</h1>
+                <p class="hero-description" data-translate-key="heroDescription">
+                    We provide startups and small businesses with the essential tech solutions to build, launch, and grow. 
+                    From MVP development and automation to AI integration and data analytics, we are your dedicated growth partner.
+                </p>
+                <div class="hero-cta">
+                    <a href="#services" class="btn-primary" data-translate-key="heroBtnPrimary">
+                        <i class="fas fa-rocket"></i>
+                        Our Solutions
+                    </a>
+                    <a href="#contact" class="btn-secondary" data-translate-key="heroBtnSecondary">
+                        <i class="fas fa-calendar-alt"></i>
+                        Book a Free Call
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="tech-stack">
+                    <div class="tech-item" data-delay="0">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-item" data-delay="200">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-item" data-delay="400">
+                        <i class="fab fa-react"></i>
+                        <span>React</span>
+                    </div>
+                    <div class="tech-item" data-delay="600">
+                        <i class="fas fa-brain"></i>
+                        <span>AI/ML</span>
+                    </div>
+                    <div class="tech-item" data-delay="800">
+                        <i class="fas fa-database"></i>
+                        <span>Data</span>
+                    </div>
+                    <div class="tech-item" data-delay="1000">
+                        <i class="fas fa-cloud"></i>
+                        <span>Cloud</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span data-translate-key="marqueeContent">Business Solutions • Power Platform • AI Implementation • Work Automation • Data Engineering • Data Analysis • Data Visualization •</span>
+            <span data-translate-key="marqueeContent" aria-hidden="true">Business Solutions • Power Platform • AI Implementation • Work Automation • Data Engineering • Data Analysis • Data Visualization •</span>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="servicesSubtitle">How We Help</div>
+                <h2 class="section-title" data-translate-key="servicesTitle">Solutions to Fuel Your Growth</h2>
+                <p class="section-description" data-translate-key="servicesDescription">
+                    We offer a suite of services designed to tackle the unique challenges faced by startups and small businesses.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="service-title" data-translate-key="service1Title">MVP & Product Development</h3>
+                    <div class="service-description" data-translate-key="service1Desc">
+                        Turn your idea into a market-ready Minimum Viable Product quickly and efficiently to test your concept and attract investors.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service1Feat1">Rapid Prototyping</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service1Feat2">Lean Development</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service1Feat3">Scalable Architecture</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service1Feat4">User Feedback Integration</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title" data-translate-key="service2Title">Process Automation</h3>
+                    <div class="service-description" data-translate-key="service2Desc">
+                        Streamline your business operations with intelligent automation solutions that save time and reduce manual errors.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service2Feat1">Workflow Automation</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service2Feat2">Power Platform Solutions</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service2Feat3">API Integrations</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service2Feat4">Business Intelligence</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title" data-translate-key="service3Title">AI Integration</h3>
+                    <div class="service-description" data-translate-key="service3Desc">
+                        Leverage artificial intelligence to enhance your products and automate complex decision-making processes.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service3Feat1">Machine Learning Models</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service3Feat2">Natural Language Processing</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service3Feat3">Computer Vision</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service3Feat4">Predictive Analytics</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title" data-translate-key="service4Title">Data Analytics</h3>
+                    <div class="service-description" data-translate-key="service4Desc">
+                        Transform your raw data into actionable insights with comprehensive analytics and visualization solutions.
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service4Feat1">Data Visualization</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service4Feat2">Business Intelligence</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service4Feat3">Performance Dashboards</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate-key="service4Feat4">Reporting Automation</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="aboutSubtitle">Who We Are</div>
+                <h2 class="section-title" data-translate-key="aboutTitle">Your Technical Growth Partner</h2>
+                <p class="section-description" data-translate-key="aboutDescription">
+                    We understand the unique challenges of scaling a startup in today's competitive landscape.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3 data-translate-key="aboutMissionTitle">Our Mission</h3>
+                    <p data-translate-key="aboutMissionText">
+                        To empower startups and small businesses with cutting-edge technology solutions that drive growth, 
+                        efficiency, and innovation. We believe every great idea deserves the right technical foundation to succeed.
+                    </p>
+                    <p data-translate-key="aboutApproachText">
+                        Our approach combines deep technical expertise with startup-minded agility, ensuring you get 
+                        solutions that not only work but scale with your business.
+                    </p>
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-arrow-right"></i>
+                        <span data-translate-key="aboutCta">Let's Build Together</span>
+                    </a>
+                </div>
+                <div class="about-stats">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label" data-translate-key="stat1Label">Projects Delivered</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label" data-translate-key="stat2Label">Client Satisfaction</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label" data-translate-key="stat3Label">Support Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="portfolioSubtitle">Success Stories</div>
+                <h2 class="section-title" data-translate-key="portfolioTitle">Case Studies</h2>
+                <p class="section-description" data-translate-key="portfolioDescription">
+                    Real projects, real results. See how we've helped startups and businesses achieve their goals.
+                </p>
+            </div>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all" data-translate-key="filterAll">All Projects</button>
+                <button class="filter-btn" data-filter="mvp" data-translate-key="filterMvp">MVP Development</button>
+                <button class="filter-btn" data-filter="automation" data-translate-key="filterAutomation">Automation</button>
+                <button class="filter-btn" data-filter="ai" data-translate-key="filterAi">AI Solutions</button>
+                <button class="filter-btn" data-filter="analytics" data-translate-key="filterAnalytics">Data Analytics</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="mvp">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title">E-Learning Platform MVP</h3>
+                        <p class="portfolio-subtitle">EdTech Startup</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description">
+                            Developed a comprehensive MVP for an online learning platform, enabling the client to secure 
+                            $500K in seed funding within 3 months of launch.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="automation">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title">Sales Process Automation</h3>
+                        <p class="portfolio-subtitle">SaaS Company</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description">
+                            Automated the entire sales pipeline using Power Platform, reducing manual work by 80% 
+                            and increasing lead conversion rates by 45%.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Power Automate</span>
+                            <span class="tech-tag">Power Apps</span>
+                            <span class="tech-tag">Dynamics 365</span>
+                            <span class="tech-tag">SharePoint</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title">AI-Powered Customer Support</h3>
+                        <p class="portfolio-subtitle">E-commerce Platform</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description">
+                            Implemented an intelligent chatbot system that handles 70% of customer inquiries automatically, 
+                            improving response time by 90% and customer satisfaction by 35%.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="analytics">
+                    <div class="portfolio-header">
+                        <h3 class="portfolio-title">Business Intelligence Dashboard</h3>
+                        <p class="portfolio-subtitle">Manufacturing Company</p>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-description">
+                            Created comprehensive analytics dashboards that provide real-time insights into operations, 
+                            leading to 25% cost reduction and improved decision-making.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">DAX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-subtitle" data-translate-key="contactSubtitle">Get Started</div>
+                <h2 class="section-title" data-translate-key="contactTitle">Ready to Scale Your Startup?</h2>
+                <p class="section-description" data-translate-key="contactDescription">
+                    Let's discuss how we can help turn your vision into reality. Book a free consultation today.
+                </p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 data-translate-key="contactInfoTitle">Let's Talk Business</h3>
+                    <p data-translate-key="contactInfoDescription">
+                        Ready to take your startup to the next level? We're here to help you build, scale, 
+                        and succeed with the right technology solutions.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://wa.me/201124178993" target="_blank" class="contact-link whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-translate-key="contactWhatsapp">WhatsApp Chat</span>
+                        </a>
+                        <a href="mailto:info@starthub.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span data-translate-key="contactEmail">Send Email</span>
+                        </a>
+                        <a href="tel:+201124178993" class="contact-link">
+                            <i class="fas fa-phone"></i>
+                            <span data-translate-key="contactPhone">Call Us</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="company" name="company" placeholder="Company Name">
+                            <label for="company">Company Name</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Select a Service</option>
+                                <option value="mvp">MVP Development</option>
+                                <option value="automation">Process Automation</option>
+                                <option value="ai">AI Integration</option>
+                                <option value="analytics">Data Analytics</option>
+                            </select>
+                            <label for="service">Service Needed</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell us about your project" rows="4" required></textarea>
+                            <label for="message">Project Details</label>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="section-container">
+            <h3 data-translate-key="newsletterTitle">Stay Updated</h3>
+            <p data-translate-key="newsletterDescription">
+                Get the latest insights on startup technology trends, best practices, and growth strategies.
+            </p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    <span data-translate-key="newsletterBtn">Subscribe</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-logo">Start Hub</div>
+                    <p>Your technical partner for startup success.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#services">MVP Development</a></li>
+                            <li><a href="#services">Process Automation</a></li>
+                            <li><a href="#services">AI Integration</a></li>
+                            <li><a href="#services">Data Analytics</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#portfolio">Case Studies</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-translate-key="footerText">&copy; 2025 Start Hub. All rights reserved. Your technical partner for startup success.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact -->
+    <div class="floating-contact">
+        <a href="https://wa.me/201124178993" target="_blank" class="floating-btn whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
